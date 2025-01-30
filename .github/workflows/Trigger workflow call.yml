@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Trigger the "workflow_call" workflow
-        uses: ./.github/workflows/your-original-workflow.yml
+        uses: ./.github/workflows/workflow_call.yml
         with:
           name: 'John Doe'
           organization: 'ExampleOrg'
