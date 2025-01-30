@@ -4,14 +4,16 @@ on:
   workflow_dispatch:  # Allow manual trigger for this workflow
 
 jobs:
-  trigger_workflow:
+  trigger_deploy_vm:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Trigger Workflow using cURL
+      - name: Set up GitHub CLI
+        uses: cli/cli-action@v2
+        with:
+          gh-token: ${{ secrets.GITHUB_TOKEN }}  # GitHub token to authenticate the CLI
+
+      - name: Trigger Workflow using gh CLI
         run: |
-          curl -X POST \
-            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            -H "Accept: application/vnd.github.v3+json" \
-            -d '{"ref":"main","inputs":{"name":"kranthi","organisation":"accenture"}}' \
-            https://api.github.com/repos/kranthi3149/accenture/actions/workflows/workflow_call.yml/dispatches
+          gh auth login --with-token <<< ${{ secrets.GITHUB_TOKEN }}
+          gh workflow run workflow_call.yml --repo kranthi3149/accenture --ref main --json name="kranthi",organisation="accenture"
