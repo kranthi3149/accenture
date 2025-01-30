@@ -1,0 +1,17 @@
+name: Echo Name
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  echo-name:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Echo Name
+      run: echo "name:kranthi"
