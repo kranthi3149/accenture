@@ -1,0 +1,27 @@
+name: Trigger workflow
+
+on:
+  workflow_run:
+    workflows: ["workflow2"]
+    types:
+      - completed
+
+jobs:
+  trigger_workflow2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger workflow2 with variables
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const workflow = await github.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow: 'workflow2.yml',  # Make sure this matches the filename of your workflow2
+              ref: 'refs/heads/main',     # Or the branch you want to trigger the workflow on
+              inputs: {
+                name: 'kranthi',
+                organization: 'accenture'
+              }
+            })
+            console.log(workflow)
