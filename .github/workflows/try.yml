@@ -13,11 +13,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Trigger Workflow
-        uses: peter-evans/workflow-dispatch@v1
+        uses: github/workflow-dispatch@v1  # Use the official GitHub action
         with:
           repository: kranthi3149/accenture  # Correct repository name based on URL
           workflow: ".github/workflows/workflow_call.yml"  # Correct file path based on URL
           ref: main  # Replace with the branch you want to trigger the workflow on (e.g., main)
           inputs: |
-            name: "kranthi"
-            organization: "accenture"
+            name: "Hardcoded Name"
+            organization: "Hardcoded Organization"
