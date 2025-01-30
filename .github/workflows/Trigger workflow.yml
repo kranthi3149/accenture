@@ -1,6 +1,7 @@
 name: Trigger workflow
 
 on:
+  workflow_dispatch:
   workflow_run:
     workflows: ["workflow2"]
     types:
