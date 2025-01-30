@@ -22,4 +22,4 @@ jobs:
 
       - name: Trigger workflow_call.yml
         run: |
-          gh workflow run kranthi3149/accenture workflow_call.yml --ref main --inputs name="kranthi" organization="accenture"
+          gh workflow -R run kranthi3149/accenture workflow_call.yml --ref main --inputs name="kranthi" organization="accenture"
