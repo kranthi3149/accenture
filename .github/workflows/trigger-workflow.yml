@@ -8,11 +8,11 @@ jobs:
     runs-on: ubuntu-latest  # Runs on a standard GitHub-hosted Ubuntu runner
     steps:
     
-      # - name: Checkout Repository
-      #   uses: actions/checkout@v2  # Checkout the current repository
+      - name: Checkout Repository
+        uses: actions/checkout@v2  # Checkout the current repository
 
       - name: Trigger workflow2
-        uses: kranthi3149/accenture/composite@main
+        uses: kranthi3149/accenture/workflow2.yml@main
         # with:
         #   workflow: workflow2.yml
         
