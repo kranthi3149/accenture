@@ -12,4 +12,4 @@ jobs:
         uses: ./.github/workflows/workflow_call.yml  # Path to your workflow
         with:
           name: "kranthi"
-          organisation: "accenture"
+          organization: "accenture"
