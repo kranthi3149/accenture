@@ -4,12 +4,14 @@ on:
   workflow_dispatch:  # Allow manual trigger for this workflow
 
 jobs:
-  trigger_deploy_vm:
+  trigger_workflow:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Trigger Workflow
-        uses: ./.github/workflows/workflow_call.yml  # Path to your workflow
-        with:
-          name: "kranthi"
-          organization: "accenture"
+      - name: Trigger Workflow using cURL
+        run: |
+          curl -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            -d '{"ref":"main","inputs":{"name":"kranthi","organisation":"accenture"}}' \
+            https://api.github.com/repos/kranthi3149/accenture/actions/workflows/workflow_call.yml/dispatches
