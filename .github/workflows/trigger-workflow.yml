@@ -2,6 +2,8 @@ name: trigger workflow
 
 on:
   workflow_dispatch:  # Allows manual trigger of the workflow
+  workflow_run:
+    workflows: [trigger-workflow2]
 
 jobs:
   triggerflow2:
