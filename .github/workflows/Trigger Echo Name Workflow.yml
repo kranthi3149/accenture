@@ -1,10 +1,7 @@
 name: Trigger Echo Name Workflow
 
 on:
-  workflow_run:
-    workflows: ["Echo Name"]
-    types:
-      - completed
+  workflow_dispatch:
 
 jobs:
   trigger-echo-name:
@@ -15,6 +12,8 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Trigger the Echo Name Workflow
-      run: |
-        echo "Triggering Echo Name workflow"
-        # Optionally trigger other actions or tasks here
+      uses: peter-evans/workflow-dispatch@v1
+      with:
+        repository: ${{ github.repository }}
+        workflow: echo-name.yml
+        ref: refs/heads/main
