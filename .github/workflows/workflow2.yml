@@ -2,16 +2,15 @@ name: workflow2
 
 on:
   workflow_dispatch:
-  workflow_call:
-  #   inputs:
-  #     name:
-  #       description: 'Enter your name'
-  #       required: true
-  #       type: string
-  #     organization:
-  #       description: 'Enter your organization'
-  #       required: true
-  #       type: string
+     # inputs:
+     #  name:
+     #    description: 'Enter your name'
+     #    required: true
+     #    type: string
+     #  organization:
+     #    description: 'Enter your organization'
+     #    required: true
+     #    type: string
 
 jobs:
   echo:
