@@ -17,7 +17,7 @@ jobs:
 
       - name: Authenticate with GitHub CLI
         run: |
-          gh auth login --with-token <<< ${{ secrets.GITHUB_TOKEN }}
+          gh auth login --with-token <<< ${{ secrets.GITHUB_TOKENS }}
 
       - name: Trigger workflow2 with inputs
         run: |
