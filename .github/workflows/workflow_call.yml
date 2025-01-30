@@ -22,5 +22,5 @@ jobs:
           echo "name: ${{ github.event.inputs.name }}"
           echo "organization: ${{ github.event.inputs.organization }}"
 
-      - name: Sleep for 1 minutes to wait for triggering workflow
-        run: sleep 60  # Sleep for 5 minutes (300 seconds)
+      # - name: Sleep for 1 minutes to wait for triggering workflow
+      #   run: sleep 60  # Sleep for 5 minutes (300 seconds)
