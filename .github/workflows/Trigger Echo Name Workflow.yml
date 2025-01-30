@@ -7,10 +7,10 @@ on:
     types:
       - completed
 
-jobs:
-  trigger-echo-name:
-    runs-on: ubuntu-latest
+# jobs:
+#   trigger-echo-name:
+#     runs-on: ubuntu-latest
 
-    steps:
-    - name: Echo Triggered Successfully
-      run: echo "Echo Name workflow has been triggered!"
+#     steps:
+#     - name: Echo Triggered Successfully
+#       run: echo "Echo Name workflow has been triggered!"
