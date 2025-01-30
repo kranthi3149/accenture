@@ -4,7 +4,7 @@ on:
   workflow_dispatch:  # Allows manual trigger of the workflow
 
 jobs:
-  trigger-deploy-gcp-vm:
+  triggerflow2:
     runs-on: ubuntu-latest  # Runs on a standard GitHub-hosted Ubuntu runner
     steps:
       - name: Checkout Repository
