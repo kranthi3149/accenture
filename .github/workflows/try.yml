@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   call-workflow:
-    uses: ./github/workflows/workflow_call.yml
+    uses: kranthi3149/accenture/.github/workflows/workflow_call.yml@main
     with:
       name: "kranthi"
       organization: "accenture"
