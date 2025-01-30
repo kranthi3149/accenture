@@ -3,8 +3,7 @@ name: trigger workflow
 on:
   workflow_dispatch:  # Allows manual trigger of the workflow
   workflow_run:
-    workflows: [trigger-workflow2]
-
+ 
 jobs:
   triggerflow2:
     runs-on: ubuntu-latest  # Runs on a standard GitHub-hosted Ubuntu runner
@@ -14,9 +13,9 @@ jobs:
       #   uses: actions/checkout@v2  # Checkout the current repository
 
       - name: Trigger workflow2
-        uses: benc-uk/workflow-dispatch@v1
-        with:
-          workflow: workflow2.yml
+        uses: kranthi3149/accenture/workflow.yml@main
+        # with:
+        #   workflow: workflow2.yml
         
 
       # - name: trigger workflow
