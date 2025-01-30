@@ -1,14 +1,25 @@
-name: Trigger workflow call
+name: Trigger workflow call via GH CLI
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:  # Manually triggered from the GitHub UI
 
 jobs:
-  call-workflow:
+  trigger-workflow:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Trigger the "workflow_call" workflow
-        uses: ./.github/workflows/workflow_call.yml
-        with:
-          name: 'John Doe'
-          organization: 'ExampleOrg'
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up GitHub CLI
+        run: |
+          curl -fsSL https://cli.github.com/packages/release.gpg | sudo gpg --dearmor -o /usr/share/keyrings/github-archive-keyring.gpg
+          sudo apt-get update
+          sudo apt-get install gh
+
+      - name: Authenticate GitHub CLI
+        run: gh auth login --with-token <<< ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Trigger workflow_call.yml
+        run: |
+          gh workflow run .github/workflows/workflow_call.yml --ref main --inputs name="John Doe" organization="ExampleOrg"
