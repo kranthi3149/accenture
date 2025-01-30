@@ -1,0 +1,15 @@
+name: Trigger workflow call
+
+on:
+  workflow_dispatch:  # Allow manual trigger for this workflow
+
+jobs:
+  trigger_deploy_vm:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Workflow
+        uses: ./.github/workflows/workflow_call.yml  # Path to your workflow
+        with:
+          name: "kranthi"
+          organisation: "accenture"
