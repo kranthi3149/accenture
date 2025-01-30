@@ -14,7 +14,7 @@ jobs:
 
       - name: Trigger workflow2 with inputs
         run: |
-          gh auth login --with-token <<< ${{ secrets.TOKEN }}
+          gh auth login --with-token <<< ${{ secrets.TOKENS }}
           gh workflow run .github/workflows/workflow2.yml \
             --ref main \
             --field name="kranthi" \
