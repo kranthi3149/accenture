@@ -7,11 +7,14 @@ jobs:
   triggerflow2:
     runs-on: ubuntu-latest  # Runs on a standard GitHub-hosted Ubuntu runner
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2  # Checkout the current repository
+    
+      # - name: Checkout Repository
+      #   uses: actions/checkout@v2  # Checkout the current repository
 
-      - name: Trigger reusable workflow
-        uses: ./.github/workflows/workflow2.yml
+      - name: Trigger workflow2
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: workflow2.yml
         
 
       # - name: trigger workflow
