@@ -1,19 +1,14 @@
 name: Trigger workflow call
 
 on:
-  workflow_dispatch:  # Allow manual trigger for this workflow
+  workflow_dispatch:
 
 jobs:
-  trigger_deploy_vm:
+  call-workflow:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Set up GitHub CLI
-        uses: cli/cli-action@v2
+      - name: Trigger the "workflow_call" workflow
+        uses: ./.github/workflows/your-original-workflow.yml
         with:
-          gh-token: ${{ secrets.GITHUB_TOKEN }}  # GitHub token to authenticate the CLI
-
-      - name: Trigger Workflow using gh CLI
-        run: |
-          gh auth login --with-token <<< ${{ secrets.GITHUB_TOKEN }}
-          gh workflow run workflow_call.yml --repo kranthi3149/accenture --ref main --json name="kranthi",organisation="accenture"
+          name: 'John Doe'
+          organization: 'ExampleOrg'
