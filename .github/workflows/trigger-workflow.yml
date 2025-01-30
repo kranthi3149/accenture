@@ -1,0 +1,21 @@
+name: trigger-workflow
+
+on:
+  workflow_dispatch:  # Allows manual trigger of the workflow
+
+jobs:
+  trigger-deploy-gcp-vm:
+    runs-on: ubuntu-latest  # Runs on a standard GitHub-hosted Ubuntu runner
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2  # Checkout the current repository
+
+      - name: trigger workflow
+        uses: github-actions/trigger-workflow@v1  # Using the action to trigger another workflow
+        with:
+          repository: kranthi3149/accenture  # Replace with your repo name
+          workflow: workflow2  # Workflow file to trigger
+          ref: main  # The branch to use for the workflow (adjust as necessary)
+          inputs: |
+            name: kranthi
+            organisatione: accenture
