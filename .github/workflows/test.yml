@@ -1,4 +1,4 @@
-name: Test
+name: test2
 
 on:
   workflow_dispatch:
@@ -7,13 +7,15 @@ jobs:
   trigger_workflow2:
     runs-on: ubuntu-latest
     steps:
-      - name: Set up GitHub CLI
-        uses: cli/cli-action@v2  # Correct action to set up the GitHub CLI
-        
+      - name: Install GitHub CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get install gh
+
       - name: Trigger workflow2 with inputs
         run: |
           gh auth login --with-token <<< ${{ secrets.GITHUB_TOKEN }}
-          gh workflow run workflow2.yml \
+          gh workflow run .github/workflows/workflow2.yml \
             --ref main \
             --field name="kranthi" \
             --field organization="accenture"
