@@ -1,0 +1,20 @@
+name: Trigger Echo Name Workflow
+
+on:
+  workflow_run:
+    workflows: ["Echo Name"]
+    types:
+      - completed
+
+jobs:
+  trigger-echo-name:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Trigger the Echo Name Workflow
+      run: |
+        echo "Triggering Echo Name workflow"
+        # Optionally trigger other actions or tasks here
