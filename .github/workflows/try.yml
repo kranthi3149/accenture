@@ -1,18 +1,32 @@
-name: trigger-workflow
+name: 'Try'
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
+    inputs:
+      name:
+        description: "name"
+        required: true
+        type: string
+      organization:
+        description: "Name of organization"
+        required: true
+        type: string
 
 permissions:
-  contents: read
-  actions: write  # Allows triggering other workflows
+  id-token: write
+  contents: read  # Read access to the repository's contents
+  actions: read   # Read access to the actions in the repository
 
 jobs:
-  call-workflow:
-    uses: kranthi3149/accenture/.github/workflows/workflow_call.yml@main
-    with:
-      name: "kranthi"
-      organization: "accenture"
+  trigger-workflow_call:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Workflow
+        uses: peter-evans/workflow-dispatch@v1
+        with:
+          repository: accenture  # Replace with the name of your repo
+          workflow: accenture\ workflow_call.yml  # Replace with the correct workflow file name
+          ref: main  # Replace with the branch you want to trigger the workflow on (e.g., main)
+          inputs: |
+            name: ${{ github.event.inputs.name }}
+            organization: ${{ github.event.inputs.organization }}
