@@ -19,6 +19,6 @@ jobs:
     steps:
       - name: Echo Inputs
         run: |
-          echo "Name: ${{ github.event.inputs.name }}"
-          echo "Organization: ${{ github.event.inputs.organization }}"
+          echo "name: ${{ github.event.inputs.name }}"
+          echo "organization: ${{ github.event.inputs.organization }}"
          
