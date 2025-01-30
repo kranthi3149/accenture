@@ -1,0 +1,32 @@
+name: Trigger workflow call via parametrized
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Name of the user'
+        required: true
+        type: string
+      organization:
+        description: 'Name of the organization'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  actions: write  # Allows triggering other workflows
+
+jobs:
+  trigger-workflow:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Authenticate GitHub CLI
+        run: gh auth login --with-token <<< ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Trigger workflow_call.yml
+        run: |
+          gh workflow run -R kranthi3149/accenture workflow_call.yml --field name="${{ github.event.inputs.name }}" --field organization="${{ github.event.inputs.organization }}"
