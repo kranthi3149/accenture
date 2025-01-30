@@ -3,6 +3,10 @@ name: Trigger workflow call via GH CLI
 on:
   workflow_dispatch:  # Manually triggered from the GitHub UI
 
+permissions:
+  contents: read
+  actions: write  # Allows triggering other workflows
+
 jobs:
   trigger-workflow:
     runs-on: ubuntu-latest
