@@ -1,0 +1,15 @@
+name: Trigger workflow2
+
+on:
+  workflow_dispatch:
+
+jobs:
+  trigger_workflow2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger workflow2 with inputs
+        uses: octokit/request-action@v2
+        with:
+          route: POST /repos/accenture/actions/workflows/workflow2.yml/dispatches
+          ref: refs/heads/main  # Replace with the branch you want
+          inputs: '{"name":"kranthi", "organization":"accenture"}'
