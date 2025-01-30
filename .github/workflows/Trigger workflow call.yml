@@ -24,4 +24,4 @@ jobs:
         run: |
           # gh workflow -R run kranthi3149/accenture workflow_call.yml --ref main --inputs name="kranthi" organization="accenture"
           # gh workflow run -R kranthi3149/accenture workflow_call.yml -f request='{name="kranthi", organization="accenture"}
-            gh workflow run workflow_call.yml --repo kranthi3149/accenture --field name="kranthi" --field organization="accenture"
+            gh workflow run -R kranthi3149/accenture workflow_call.yml --field name="kranthi" --field organization="accenture"
