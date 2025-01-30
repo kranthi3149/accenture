@@ -2,6 +2,7 @@ name: workflow2
 
 on:
   workflow_dispatch:
+  workflow_call:
     inputs:
       name:
         description: 'Enter your name'
