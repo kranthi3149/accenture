@@ -9,7 +9,7 @@ jobs:
     uses: ./.github/workflows/workflow2.yml
     with:
       name: "kranthi"
-      organization: "hcl"
+      # organization: "hcl"
 
 # permissions:
 #   id-token: write
