@@ -1,19 +1,22 @@
 name: workflow2
 
 on:
-   workflow_call:
-     inputs:
-        name:
+  workflow_call:
+    inputs:
+      name:
         description: 'Enter your name'
         required: true
-        default: "reddy"
-     
+        type: string
+      organization:
+        description: 'Enter your organization'
+        required: false
+        type: string
+
 jobs:
   echo:
     runs-on: ubuntu-latest
     steps:
       - name: Echo Inputs
         run: |
-          echo "Name: ${{ github.event.inputs.name }}"
-          echo "Organization: ${{ github.event.inputs.organization }}"
-         
+          echo "Name: ${{ inputs.name }}"
+          echo "Organization: ${{ inputs.organization }}"
