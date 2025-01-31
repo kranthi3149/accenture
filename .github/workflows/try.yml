@@ -9,5 +9,5 @@ jobs:
   call-workflow2:
     uses: kranthi3149/accenture/.github/workflows/workflow2.yml@main
     with:
-      name: "John Doe"
-      organization: "TechCorp"
+      name: "kranthi"
+      organization: "accenture"
