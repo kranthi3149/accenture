@@ -3,21 +3,28 @@ name: 'Try'
 on:
   workflow_dispatch:
 
-permissions:
-  id-token: write
-  contents: read  # Read access to the repository's contents
-  actions: read   # Read access to the actions in the repository
-
 jobs:
-  trigger-workflow_call:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Trigger Workflow
-        uses: github/workflow-dispatch@v1  # Use the official GitHub action
-        with:
-          repository: kranthi3149/accenture  # Correct repository name based on URL
-          workflow: ".github/workflows/workflow_call.yml"  # Correct file path based on URL
-          ref: main  # Replace with the branch you want to trigger the workflow on (e.g., main)
-          inputs: |
-            name: "Hardcoded Name"
-            organization: "Hardcoded Organization"
+  call-another-workflow:
+    uses: ./.github/workflows/workflow2.yml
+    with:
+      name: "kranthi"
+      organization: "hcl"
+
+# permissions:
+#   id-token: write
+#   contents: read  # Read access to the repository's contents
+#   actions: read   # Read access to the actions in the repository
+
+# jobs:
+#   trigger-workflow_call:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Trigger Workflow
+#         uses: github/workflow-dispatch@v1  # Use the official GitHub action
+#         with:
+#           repository: kranthi3149/accenture  # Correct repository name based on URL
+#           workflow: ".github/workflows/workflow_call.yml"  # Correct file path based on URL
+#           ref: main  # Replace with the branch you want to trigger the workflow on (e.g., main)
+#           inputs: |
+#             name: "Hardcoded Name"
+#             organization: "Hardcoded Organization"
