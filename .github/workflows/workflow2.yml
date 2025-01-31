@@ -1,17 +1,13 @@
 name: workflow2
 
 on:
-   workflow_dispatch:
+   workflow_call:
      inputs:
-      name:
+        name:
         description: 'Enter your name'
         required: true
         default: "reddy"
-      organization:
-        description: 'Enter your organization'
-        required: true
-        default: "accenture"
-
+     
 jobs:
   echo:
     runs-on: ubuntu-latest
