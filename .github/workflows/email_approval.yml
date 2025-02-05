@@ -10,8 +10,8 @@ jobs:
         env:
           SMTP_SERVER: "smtp.gmail.com"   # Change this based on your email provider
           SMTP_PORT: "587"
-          SMTP_USER: "${{ secrets.EMAIL_USERNAME }}"
-          SMTP_PASS: "${{ secrets.EMAIL_PASSWORD }}"
+          SMTP_USER: "kranthi3149@gmail.com" #${{ secrets.EMAIL_USERNAME }}"
+          SMTP_PASS: "naistam" #${{ secrets.EMAIL_PASSWORD }}"
           APPROVER_EMAIL: "approver@example.com"
         run: |
           echo "Subject: Approval Needed: Deploy GCP VM" > email.txt
