@@ -1,0 +1,40 @@
+name: email_approval
+on:  
+  workflow_dispatch:
+
+jobs:
+  send-approval-email:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Email Notification
+        env:
+          SMTP_SERVER: "smtp.gmail.com"   # Change this based on your email provider
+          SMTP_PORT: "587"
+          SMTP_USER: "${{ secrets.EMAIL_USERNAME }}"
+          SMTP_PASS: "${{ secrets.EMAIL_PASSWORD }}"
+          APPROVER_EMAIL: "approver@example.com"
+        run: |
+          echo "Subject: Approval Needed: Deploy GCP VM" > email.txt
+          echo "To: $APPROVER_EMAIL" >> email.txt
+          echo "From: $SMTP_USER" >> email.txt
+          echo "" >> email.txt
+          echo "Please approve the workflow in GitHub Actions UI." >> email.txt
+
+          curl --url "smtps://$SMTP_SERVER:$SMTP_PORT" --ssl-reqd \
+            --mail-from "$SMTP_USER" --mail-rcpt "$APPROVER_EMAIL" \
+            --upload-file email.txt --user "$SMTP_USER:$SMTP_PASS"
+
+  wait-for-approval:
+    runs-on: ubuntu-latest
+    needs: send-approval-email
+    environment: production  # This pauses execution until manual approval
+    steps:
+      - name: Approved ✅
+        run: echo "Deployment approved!"
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: wait-for-approval
+    steps:
+      - name: Deploy VM
+        run: echo "Deploying VM on GCP..."
